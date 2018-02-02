@@ -79,15 +79,14 @@ kbd {
 
 .TimetableContent {
   text-transform: uppercase;
-  color: grey;
-  background-color: #f9efa4;
-  cursor: pointer;
-}
-
-.TimetableContent.highlight {
   color: black;
   background-color: #CCFF33;
   cursor: pointer;
+}
+
+.TimetableContent.slot-clash {
+    background-color: #f00;
+    color: #fff;
 }
 
 .paste-area .table-bordered td,

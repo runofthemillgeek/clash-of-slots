@@ -57,10 +57,7 @@ app.fillTable = function fillTable(tableHtml) {
     Object.keys(slots).forEach(function (slot) {
         var tds = d.querySelectorAll('.' + slot);
         tds.forEach(function (td) {
-            td.classList.add('highlight');
-            var div = d.createElement('div');
-            div.textContent = slots[slot];
-            td.appendChild(div);
+            td.classList.add('slot-clash');
         });
     });
 }
