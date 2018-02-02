@@ -1,0 +1,19 @@
+function include(file)
+{
+	var script = document.createElement('script');
+	script.src = file;
+	script.type = 'text/javascript';
+	script.defer = true;
+	
+	document.getElementsByTagName('head').item(0).appendChild(script);
+}
+
+//include("http://vikku.info/programming/js/sh/shCore.js");
+//include("http://vikku.info/programming/js/sh/shBrushJScript.js");
+//include("http://vikku.info/programming/js/sh/shBrushPhp.js");
+//include("http://vikku.info/programming/js/geodata-jsr-class.js");
+
+include("//vikku.info/programming/js/sh/shCore.js");
+include("//vikku.info/programming/js/sh/shBrushJScript.js");
+include("//vikku.info/programming/js/sh/shBrushPhp.js");
+include("//vikku.info/programming/js/geodata-jsr-class.js");

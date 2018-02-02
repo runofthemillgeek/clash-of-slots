@@ -1,0 +1,2280 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)https://vtopbeta.vit.ac.in/vtop/processLogin -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><!--<base href="https://vtopbeta.vit.ac.in/vtop/">--><base href=".">
+
+
+
+	<!--<base href="https://vtopbeta.vit.ac.in/vtop/">--><base href="."> 
+   	
+    <meta http-equiv="cache-control" content="max-age=0">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+		
+	<link href="https://vtopbeta.vit.ac.in/vtop/assets/img/favicon.ico" rel="icon" type="image/x-icon">
+    <link href="https://vtopbeta.vit.ac.in/vtop/assets/img/favicon.ico" rel="shortcut icon" type="image/x-icon">   	
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>VIT - VTOP</title>
+		<!-- Tell the browser to be responsive to screen width -->
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+		<!-- Bootstrap 3.3.6 -->
+	<link rel="stylesheet" href="./sangeeth_sample_files/bootstrap.min.css">
+		<!-- Font Awesome -->
+	<link rel="stylesheet" href="./sangeeth_sample_files/sweetalert.css">
+	<link rel="stylesheet" href="./sangeeth_sample_files/font-awesome.min.css">
+		<!-- Theme style -->
+	<link rel="stylesheet" href="./sangeeth_sample_files/AdminLTE.css">
+	<link rel="stylesheet" href="./sangeeth_sample_files/skin-blue-light.css">
+	<link rel="stylesheet" href="./sangeeth_sample_files/form_style.css">
+	<link rel="stylesheet" href="./sangeeth_sample_files/pagination_style.css">
+		<!-- daterange picker -->
+	<link rel="stylesheet" href="./sangeeth_sample_files/daterangepicker.css">
+	
+	 <!-- Bootstrap time Picker -->
+  	<link rel="stylesheet" href="./sangeeth_sample_files/bootstrap-timepicker.min.css">
+
+  	<link href="./sangeeth_sample_files/jquerysctipttop.css" rel="stylesheet" type="text/css">
+  	<link href="./sangeeth_sample_files/bootstrap-datetimepicker.css" rel="stylesheet" type="text/css">
+
+		<!-- bootstrap datepicker -->
+	<link rel="stylesheet" href="./sangeeth_sample_files/datepicker3.css">
+		<!-- include summernote css/js-->
+	<link href="./sangeeth_sample_files/summernote.css" rel="stylesheet">
+	
+    <link rel="stylesheet" href="./sangeeth_sample_files/bootstrapValidator.css">
+
+    <link rel="stylesheet" href="./sangeeth_sample_files/bootstrap-multiselect.css"> 
+
+    <link rel="stylesheet" href="./sangeeth_sample_files/validationEngine.jquery.css" type="text/css">
+    <link rel="stylesheet" href="./sangeeth_sample_files/template.css" type="text/css">
+    <link rel="stylesheet" href="./sangeeth_sample_files/jquery.dataTables.min.css" type="text/css">
+    <link rel="stylesheet" href="./sangeeth_sample_files/dataTables.bootstrap.min.css" type="text/css">
+    
+    <link href="./sangeeth_sample_files/datatables.min.css" rel="stylesheet" type="text/css">
+	<link href="./sangeeth_sample_files/datatables.css" rel="stylesheet" type="text/css">
+    
+    
+	<style>	
+			.trim{padding:0px;margin:0px;}
+			table tbody tr:hover { background-color: #E0EEEE; cursor: pointer; } 
+		   
+		   .rightAlign1 {text-align: right;}
+		   .rightAlign2 {direction: rtl;}
+			
+			.uppercase {
+			    text-transform: uppercase;
+			}
+			
+			.lowercase {
+			    text-transform: lowercase;
+			}
+			
+			.capitalize {
+			    text-transform: capitalize;
+			}		   
+		   
+    }
+
+</style>
+
+<script>
+
+	function closeProcedure() {
+		alert("close Entered");
+	}
+
+/* 	$(window).bind("onbeforeunload", function() {
+		alert("jquery Entered");
+	})
+ */	
+	$(window).bind("onunload", function() { 
+		$.blockUI();
+		ajaxCall("/cloneLogout",null,null);
+		$.unblockUI();
+	})
+	
+
+</script>
+
+	
+
+
+<script src="https://vikku.info/programming/js/sh/shCore.js" type="text/javascript" defer=""></script><script src="https://vikku.info/programming/js/sh/shBrushJScript.js" type="text/javascript" defer=""></script><script src="https://vikku.info/programming/js/sh/shBrushPhp.js" type="text/javascript" defer=""></script><script src="https://vikku.info/programming/js/geodata-jsr-class.js" type="text/javascript" defer=""></script></head>
+
+<body class="skin-blue-light sidebar-mini fixed" onbeforeunload="closeProcedure()" style="">
+	<div class="wrapper">
+		<header class="main-header">
+				<script type="text/javascript">
+					window.onload = function() {
+						document.onkeydown = function(e) {
+							return (e.which || e.keyCode) != 116;
+						};
+			
+					}
+				</script>
+	
+				<!-- Logo -->
+				<!-- <a href="http://www.vit.ac.in" class="logo"> -->
+					<div class="logo">			 
+						<span class="logo-mini"><b>VIT</b></span> <!-- logo for regular state and mobile devices -->
+						<span class="logo-lg"><b>VIT </b></span>
+					</div>
+				<!-- </a> -->
+	
+				<!-- Header Navbar -->
+				
+				
+				<nav class="navbar navbar-static-top" role="navigation">
+					<!-- Sidebar toggle button-->
+					<a href="https://vtopbeta.vit.ac.in/vtop/#" class="sidebar-toggle" data-toggle="offcanvas" role="button"> <span class="sr-only">Toggle navigation</span>
+					</a>
+					<!-- Navbar Right Menu -->
+					<div class="navbar-custom-menu">
+		
+						<ul class="nav navbar-nav">
+								<!-- User Account Menu -->
+							<li class="dropdown user user-menu">
+								<!-- Menu Toggle Button --> <a href="https://vtopbeta.vit.ac.in/vtop/#" class="dropdown-toggle" data-toggle="dropdown"> <!-- The user image in the navbar-->
+									<img class="user-image" alt="User Image" src="./sangeeth_sample_files/saved_resource"> <!-- hidden-xs hides the username on small devices so only the image appears. -->
+									<span class="hidden-xs">14MSE0028 (STUDENT)</span> 
+							</a>
+								<ul class="dropdown-menu">
+									<!-- The user image in the menu -->
+									<li class="user-header"><img class="img-circle" alt="User Image" src="./sangeeth_sample_files/saved_resource">
+	
+										<p></p></li>
+									<!-- Menu Footer-->
+									<li class="user-footer">
+									<div>
+										<div class="pull-left">
+											
+										</div>
+										</div>
+										<form method="post" action="https://vtopbeta.vit.ac.in/vtop/processLogout">
+											<div class="pull-right">
+												<button id="btnLogout" type="submit" class="btn btn-default btn-flat">Sign out</button>
+											</div>
+										</form>
+									</li>
+								</ul>
+							</li>
+							<!-- Settings Side Bar -->
+						</ul>
+							
+					</div>
+				</nav>
+				
+			</header>
+		<aside class="main-sidebar">
+
+		<!-- sidebar: style can be found in sidebar.less -->
+		<div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 888px;"><section class="sidebar" style="height: 888px; overflow: hidden; width: auto;">
+
+	 		<!-- Sidebar Menu -->
+
+	 		
+
+			<div id="dbMenu">
+  
+		 		
+		 			  
+					<ul class="sidebar-menu">
+	
+						 
+
+								<li class="treeview"> <a href="https://vtopbeta.vit.ac.in/vtop/#"><i class="fa fa-tasks"></i><span>ADMISSIONS</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span> </a><ul class="treeview-menu" style="display: none;"><li><a href="javascript:loadmydiv(&#39;admissions/scholarshipPageController&#39;)" id="idOf0"><i class="fa fa-user"></i> <span>Financial Assistance Scholarship</span></a></li>
+
+						
+	
+						 
+
+								
+
+						
+	
+						 
+
+								</ul></li><li class="treeview active"> <a href="https://vtopbeta.vit.ac.in/vtop/#"><i class="fa fa-tasks"></i><span>ACADEMICS</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span> </a><ul class="treeview-menu menu-open" style="display: block;"><li><a href="javascript:loadmydiv(&#39;academics/common/Curriculum&#39;)" id="idOf2"><i class="fa fa-graduation-cap"></i> <span>My Curriculum</span></a></li>
+
+						
+	
+						 
+
+								<li><a href="javascript:loadmydiv(&#39;academics/common/StudentTimeTable&#39;)" id="idOf3"><i class="fa fa-graduation-cap"></i> <span>Time Table</span></a></li>
+
+						
+	
+						 
+
+								<li><a href="javascript:loadmydiv(&#39;academics/common/StudentAttendance&#39;)" id="idOf4"><i class="fa fa-graduation-cap"></i> <span>Class Attendance</span></a></li>
+
+						
+	
+						 
+
+								<li><a href="javascript:loadmydiv(&#39;academics/common/StudentCoursePage&#39;)" id="idOf5"><i class="fa fa-graduation-cap"></i> <span>Course Page</span></a></li>
+
+						
+	
+						 
+
+								<li><a href="javascript:loadmydiv(&#39;academics/common/ExtraCurricular&#39;)" id="idOf6"><i class="fa fa-graduation-cap"></i> <span>Co-Extra Curricular</span></a></li>
+
+						
+	
+						 
+
+								<li><a href="javascript:loadmydiv(&#39;academics/common/WishlistStudent&#39;)" id="idOf7"><i class="fa fa-graduation-cap"></i> <span>WishList Registraion </span></a></li>
+
+						
+	
+						 
+
+								<li><a href="javascript:loadmydiv(&#39;academics/council/CouncilRegulationView&#39;)" id="idOf8"><i class="fa fa-graduation-cap"></i> <span>Regulation</span></a></li>
+
+						
+	
+						 
+
+								<li class="treeview"> <a href="https://vtopbeta.vit.ac.in/vtop/#"><i class="fa fa-tasks"></i><span>Internship</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span> </a><ul class="treeview-menu">
+
+						
+	
+						 
+
+								<li><a href="javascript:loadmydiv(&#39;internship/InternshipRegistration&#39;)" id="idOf10"><i class="fa fa-graduation-cap"></i> <span>Industrial Internship </span></a></li>
+
+						
+	
+						 
+
+								</ul></li><li><a href="javascript:loadmydiv(&#39;set/setRegistrationViewPage&#39;)" id="idOf11"><i class="fa fa-leanpub"></i> <span>SET Conference Registration</span></a></li>
+
+						
+	
+						 
+
+								<li class="treeview"> <a href="https://vtopbeta.vit.ac.in/vtop/#"><i class="fa fa-tasks"></i><span>QC Meeting</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span> </a><ul class="treeview-menu">
+
+						
+	
+						 
+
+								<li><a href="javascript:loadmydiv(&#39;academics/common/QCMStudentLogin&#39;)" id="idOf13"><i class="fa fa-graduation-cap"></i> <span>QCM View </span></a></li>
+
+						
+	
+						 
+
+								</ul></li><li><a href="javascript:loadmydiv(&#39;academics/common/ProjectView&#39;)" id="idOf14"><i class="fa fa-graduation-cap"></i> <span>Project</span></a></li>
+
+						
+	
+						 
+
+								</ul></li><li class="treeview"> <a href="https://vtopbeta.vit.ac.in/vtop/#"><i class="fa fa-tasks"></i><span>RESEARCH</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span> </a><ul class="treeview-menu"><li><a href="javascript:loadmydiv(&#39;research/researchProfile&#39;)" id="idOf15"><i class="fa fa-bank"></i> <span>My Research Profile</span></a></li>
+
+						
+	
+						 
+
+								
+
+						
+	
+						 
+
+								<li><a href="javascript:loadmydiv(&#39;research/CourseRegistrationStatus&#39;)" id="idOf17"><i class="fa fa-bank"></i> <span>Registration Status</span></a></li>
+
+						
+	
+						 
+
+								</ul></li><li class="treeview"> <a href="https://vtopbeta.vit.ac.in/vtop/#"><i class="fa fa-tasks"></i><span>PROCTOR</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span> </a><ul class="treeview-menu"><li><a href="javascript:loadmydiv(&#39;proctor/viewProctorDetails&#39;)" id="idOf18"><i class="fa fa-users"></i> <span>View Proctor Details</span></a></li>
+
+						
+	
+						 
+
+								<li><a href="javascript:loadmydiv(&#39;proctor/viewMessagesSendByProctor&#39;)" id="idOf19"><i class="fa fa-users"></i> <span>View Proctor's Message</span></a></li>
+
+						
+	
+						 
+
+								<li><a href="javascript:loadmydiv(&#39;proctor/sendMessageToProctor&#39;)" id="idOf20"><i class="fa fa-users"></i> <span>Send Message to Proctor</span></a></li>
+
+						
+	
+						 
+
+								</ul></li><li class="treeview"> <a href="https://vtopbeta.vit.ac.in/vtop/#"><i class="fa fa-tasks"></i><span>SERVICES</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span> </a><ul class="treeview-menu"><li class="treeview"> <a href="https://vtopbeta.vit.ac.in/vtop/#"><i class="fa fa-tasks"></i><span>PHYSICAL EDUCATION</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span> </a><ul class="treeview-menu">
+
+						
+	
+						 
+
+								<li><a href="javascript:loadmydiv(&#39;phyedu/facilityAvailable&#39;)" id="idOf22"><i class="fa fa-trophy"></i> <span>Facility Registration</span></a></li>
+
+						
+	
+						 
+
+								</ul></li><li class="treeview"> <a href="https://vtopbeta.vit.ac.in/vtop/#"><i class="fa fa-tasks"></i><span>TRANSPORT</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span> </a><ul class="treeview-menu">
+
+						
+	
+						 
+
+								
+
+						
+	
+						 
+
+								</ul></li></ul></li><li class="treeview"> <a href="https://vtopbeta.vit.ac.in/vtop/#"><i class="fa fa-tasks"></i><span>ONLINE PAYMENTS</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span> </a><ul class="treeview-menu"><li><a href="javascript:loadmydiv(&#39;p2p/Payments&#39;)" id="idOf25"><i class="fa fa-cc-visa"></i> <span>PAYMENTS</span></a></li>
+
+						
+	
+						 
+
+								<li><a href="javascript:loadmydiv(&#39;p2p/getReceiptsApplno&#39;)" id="idOf26"><i class="fa fa-cc-visa"></i> <span>PAYMENT RECEIPTS</span></a></li>
+
+						
+	
+						 
+
+								</ul></li><li class="treeview"> <a href="https://vtopbeta.vit.ac.in/vtop/#"><i class="fa fa-tasks"></i><span>LIBRARY</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span> </a><ul class="treeview-menu"><li><a href="javascript:loadmydiv(&#39;p2p/library&#39;)" id="idOf27"><i class="fa fa-book"></i> <span>Library</span></a></li>
+
+						
+	
+						 
+
+								</ul></li><li class="treeview"> <a href="https://vtopbeta.vit.ac.in/vtop/#"><i class="fa fa-tasks"></i><span>MY INFO</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span> </a><ul class="treeview-menu"><li><a href="javascript:loadmydiv(&#39;proctor/viewStudentCredentials&#39;)" id="idOf28"><i class="fa fa-user"></i> <span>VIT Gmail Credentials</span></a></li>
+
+						
+	
+						 
+
+								<li><a href="javascript:loadmydiv(&#39;admissions/AcknowledgmentView&#39;)" id="idOf29"><i class="fa fa-user"></i> <span>Acknowledgement View</span></a></li>
+
+						
+	
+						 
+
+								
+
+						
+	
+						 
+
+								<li><a href="javascript:loadmydiv(&#39;studentsRecord/SearchRegnoStudent&#39;)" id="idOf31"><i class="fa fa-user"></i> <span>Profile Information</span></a></li>
+
+						
+	
+						 
+
+								<li><a href="javascript:loadmydiv(&#39;finance/studentBankDetails&#39;)" id="idOf32"><i class="fa fa-user"></i> <span>Student Bank info</span></a></li>
+
+						
+	
+						 
+
+								</ul></li><li class="treeview"> <a href="https://vtopbeta.vit.ac.in/vtop/#"><i class="fa fa-tasks"></i><span>COMPREHENSIVE EXAM</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span> </a><ul class="treeview-menu"><li><a href="javascript:loadmydiv(&#39;compre/questionPreview&#39;)" id="idOf33"><i class="fa fa-file-text"></i> <span>Question Preview</span></a></li>
+
+						
+	
+						 
+
+								<li><a href="javascript:loadmydiv(&#39;compre/registrationForm&#39;)" id="idOf34"><i class="fa fa-file-text"></i> <span>Comprehensive Exam</span></a></li>
+
+						
+	
+						 
+
+								<li><a href="javascript:loadmydiv(&#39;compre/studentExamInfo&#39;)" id="idOf35"><i class="fa fa-file-text"></i> <span>Exam Informations</span></a></li>
+
+						
+	
+						 
+
+								</ul></li><li class="treeview"> <a href="https://vtopbeta.vit.ac.in/vtop/#"><i class="fa fa-tasks"></i><span>EXAMINATIONS</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span> </a><ul class="treeview-menu"><li><a href="javascript:loadmydiv(&#39;examinations/StudExamSchedule&#39;)" id="idOf36"><i class="fa fa-book"></i> <span>Exam Schedule</span></a></li>
+
+						
+	
+						 
+
+								<li><a href="javascript:loadmydiv(&#39;examinations/StudentDA&#39;)" id="idOf37"><i class="fa fa-book"></i> <span>Digital Assignment Upload</span></a></li>
+
+						
+	
+						 
+
+								<li><a href="javascript:loadmydiv(&#39;examinations/StudentMarkView&#39;)" id="idOf38"><i class="fa fa-book"></i> <span>Mark View</span></a></li>
+
+						
+	
+						 
+
+								<li><a href="javascript:loadmydiv(&#39;examinations/examGradeView/StudentGradeView&#39;)" id="idOf39"><i class="fa fa-book"></i> <span>Grade View</span></a></li>
+
+						
+	
+						 
+
+								<li><a href="javascript:loadmydiv(&#39;examinations/paperSeeing/PaperSeeing&#39;)" id="idOf40"><i class="fa fa-book"></i> <span>Paper Seeing &amp; Re-Evaluation </span></a></li>
+
+						
+	
+						 
+
+								<li><a href="javascript:loadmydiv(&#39;examinations/projectFileUpload/ProjectView&#39;)" id="idOf41"><i class="fa fa-book"></i> <span>Project File Upload</span></a></li>
+
+						
+	
+						 
+
+								<li><a href="javascript:loadmydiv(&#39;examinations/examPadCrendentials&#39;)" id="idOf42"><i class="fa fa-book"></i> <span>DigitalPad Device Credentials</span></a></li>
+
+						
+	
+						 
+
+								
+
+						
+	
+						 
+
+								<li><a href="javascript:loadmydiv(&#39;examinations/transcript/TranscriptMain&#39;)" id="idOf44"><i class="fa fa-book"></i> <span>Transcript</span></a></li>
+
+						
+	
+						 
+
+								</ul></li><li class="treeview"> <a href="https://vtopbeta.vit.ac.in/vtop/#"><i class="fa fa-tasks"></i><span>EVENTS</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span> </a><ul class="treeview-menu"><li class="treeview"> <a href="https://vtopbeta.vit.ac.in/vtop/#"><i class="fa fa-tasks"></i><span>RIVIERA</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span> </a><ul class="treeview-menu">
+
+						
+	
+						 
+
+								<li><a href="javascript:loadmydiv(&#39;Riviera/StudentCombosRegistration&#39;)" id="idOf46"><i class="fa fa-hourglass-start"></i> <span>Merchandise Registration</span></a></li>
+
+						
+	
+						 
+
+								<li><a href="javascript:loadmydiv(&#39;Riviera/StudentRivieraCombosViews&#39;)" id="idOf47"><i class="fa fa-hourglass-start"></i> <span>Merchandise View</span></a></li>
+
+						
+	
+						 
+
+								<li><a href="javascript:loadmydiv(&#39;Riviera/StudentRivieraCombosPayment&#39;)" id="idOf48"><i class="fa fa-hourglass-start"></i> <span>Merchandise Payment</span></a></li>
+
+						
+	
+						 
+
+								<li><a href="javascript:loadmydiv(&#39;Riviera/StudentRivieraEventsRegistration&#39;)" id="idOf49"><i class="fa fa-hourglass-start"></i> <span>Event Registration</span></a></li>
+
+						
+	
+						 
+
+								<li><a href="javascript:loadmydiv(&#39;Riviera/StudentRivieraEventsViews&#39;)" id="idOf50"><i class="fa fa-hourglass-start"></i> <span>Event View</span></a></li>
+
+						
+	
+						 
+
+								<li><a href="javascript:loadmydiv(&#39;Riviera/StudentRivieraEventsPayment&#39;)" id="idOf51"><i class="fa fa-hourglass-start"></i> <span>Event Payment</span></a></li>
+
+						
+	
+						 
+
+								</ul></li></ul></li><li class="treeview"> <a href="https://vtopbeta.vit.ac.in/vtop/#"><i class="fa fa-tasks"></i><span>HOSTEL</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span> </a><ul class="treeview-menu"><li><a href="javascript:loadmydiv(&#39;hostels/student/leave&#39;)" id="idOf52"><i class="fa fa-home"></i> <span>Hostel Leave</span></a></li>
+
+						
+	
+						 
+
+								<li><a href="javascript:loadmydiv(&#39;hostels/student/mess/change&#39;)" id="idOf53"><i class="fa fa-home"></i> <span>Apply for Mess Change</span></a></li>
+
+						
+	
+						 
+
+								<li><a href="javascript:loadmydiv(&#39;hostels/lab/permission&#39;)" id="idOf54"><i class="fa fa-home"></i> <span>Apply For Lab-Permission</span></a></li>
+
+						
+	
+					</ul>
+				
+			</li></ul></div>
+			
+			
+			<div>	
+			<div id="defaultMenu">
+      
+            <ul class="sidebar-menu">
+              <li class="treeview"> <a href="https://vtopbeta.vit.ac.in/vtop/#"><i class="glyphicon glyphicon-briefcase"></i>
+                                <span>My Account</span> <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i></span> </a>
+                  <ul class="treeview-menu">
+  
+                    <li class="active">
+                      <a href="javascript:loadmydiv(&#39;controlpanel/ChangePassword&#39;)" id="ChangePassword">
+                        <i class="glyphicon glyphicon-lock"></i> <span>Change Password</span>  
+                      </a>
+                    </li>
+
+                  </ul>
+              </li>
+            </ul>
+          </div>
+          </div>
+
+ 
+		</section><div class="slimScrollBar" style="background: rgba(0, 0, 0, 0.2); width: 3px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 888px;"></div><div class="slimScrollRail" style="width: 3px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+		<!-- /.sidebar -->
+	</aside>
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper" id="page-wrapper" style="min-height: 937px;"><div class="container">
+				<!-- Content Header (Page header) -->
+				<section class="content-header">
+					<h1>Time Table</h1>
+					<ol class="breadcrumb">
+						<li><a href="https://vtopbeta.vit.ac.in/vtop/#"><i class="fa fa-dashboard"></i> Home</a></li>
+						<li class="active">Time Table</li>
+					</ol>
+				</section>
+
+				<!-- Content here -->
+				<section class="content">
+					<!--  <div class="row">-->
+					<div class="col-sm-11  col-md-offset-0">
+						<div class="box box-solid box-primary">
+							<div class="box-header with-border text-center">
+								<h3 class="box-title">Time Table</h3>
+							</div>
+							<!-- /.box-header -->
+							<!-- form start -->
+							<form class="form-horizontal" method="post" id="studentTimeTable" name="studentTimeTable" autocomplete="off">
+								<div class="panel-body">
+
+									<!-- Semester Sub Id -->
+									<div class="form-groups">
+										<label for="semesterSubId" class="col-md-3 control-label" style="text-align: left;">Semester Name</label>
+										<div class="col-md-9 form-group">
+											<select class="form-control" name="semesterSubId" id="semesterSubId" data-validation-engine="validate[required]">
+												<option value="" selected="selected">-- Choose
+													Semester --</option>
+												<option selected="selected" value="VL2017186">Tri Semester III and VI 2017-18</option>
+												<option selected="selected" value="VL2017185">Winter Semester 2017-18</option>
+												<option selected="selected" value="VL2017183">Tri Semester II &amp; V 2017-18</option>
+												<option selected="selected" value="VL2017181">Fall Semester 2017-18</option>
+												<option selected="selected" value="VL2017182">Tri Semester I &amp; IV 2017-18</option>
+											</select>
+
+
+										</div>
+									</div>
+									<div class="form-group text-center">
+										<div class="col-sm-12 col-md-6 col-md-offset-3">
+											<button class="btn btn-md btn-primary btn-block" type="submit">View</button>
+
+										</div>
+									</div>
+
+								</div>
+							</form>
+
+
+						</div>
+
+
+						<!-- loadMyFragment -->
+						<div class="form-group" id="loadMyFragment"><div class="form-group" id="getStudentDetails">
+								<div class="table-responsive" id="studentDetailsList">
+										
+										<h4>
+										<span><span style="color: red;">* Note:</span>
+											Re-Registration Last Payment Date is</span> <span>19-01-2018</span>
+									</h4>						
+									<table class="table" style="background-color: #fff; border: 1px solid #ddd; font-size: 12px; padding: 4px; text-align: center;">
+										<tbody><tr><td colspan="16" style="border:1px solid #b2b2b2;">
+									<div class="receipt-generate">
+										
+									</div>
+									<div class="cancle-generate">
+										
+									</div></td></tr>
+									
+										
+											<tr style="background-color: #656565; color: #fff;border:1px solid #b2b2b2;">
+												<th style="vertical-align: middle; text-align: center; border-right: 1px solid #b2b2b2; padding: 5px;">Sl.No</th>
+												<th style="vertical-align: middle; text-align: center; border-right: 1px solid #b2b2b2; padding: 5px;">Class
+													Group</th>
+												<th style="vertical-align: middle; text-align: center; border-right: 1px solid #b2b2b2; padding: 5px;">Course
+													Code</th>
+												<th style="vertical-align: middle; text-align: center; border-right: 1px solid #b2b2b2; padding: 5px;">Course
+													Title</th>
+												<th style="vertical-align: middle; text-align: center; border-right: 1px solid #b2b2b2; padding: 5px;">Course
+													Type</th>
+												<th style="vertical-align: middle; text-align: center; border-right: 1px solid #b2b2b2; padding: 5px; width:6%;">L T P J C</th>
+												<th style="vertical-align: middle; text-align: center; border-right: 1px solid #b2b2b2; padding: 5px;">Course
+													Option</th>
+												<th style="vertical-align: middle; text-align: center; border-right: 1px solid #b2b2b2; padding: 5px;">Class
+													Nbr</th>
+												<th style="vertical-align: middle; text-align: center; border-right: 1px solid #b2b2b2; padding: 5px;">Slot</th>
+												<th style="vertical-align: middle; text-align: center; border-right: 1px solid #b2b2b2; padding: 5px;">Venue</th>
+												<th style="vertical-align: middle; text-align: center; border-right: 1px solid #b2b2b2; padding: 5px;">Faculty
+													Name</th>
+												<th style="vertical-align: middle; text-align: center; border-right: 1px solid #b2b2b2; padding: 5px;">Status</th>
+												<th style="vertical-align: middle; text-align: center; border-right: 1px solid #b2b2b2; padding: 5px;">Ref.No</th>
+											</tr>
+										
+										<tr>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">1</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">General (Semester)</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">HUM124</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">Indian Heritage and Culture</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">Theory Only</p>
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">3 0 0 0 3</p>
+											</td>																	
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">Regular</p>
+																								
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">VL2017185004848</p>
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">E1+TE1</p>
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">SMV123</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">			
+												
+													<p style="margin: 0px;">BANGALORE MORARJI - SSL</p>
+												
+																							
+											</td>											
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;"><span style="color:green;">Registered and Approved</span></p>
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">0</p>
+											</td>
+										</tr>
+										
+										<tr>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">2</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">General (Semester)</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">MAT202</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">Linear Algebra</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">Theory Only</p>
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">3 1 0 0 4</p>
+											</td>																	
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">Regular</p>
+																								
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">VL2017185000575</p>
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">B2+TB2+TBB2</p>
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">SJTG05</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">			
+												
+													<p style="margin: 0px;">MADHU V - SAS</p>
+												
+																							
+											</td>											
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;"><span style="color:green;">Registered and Approved</span></p>
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">0</p>
+											</td>
+										</tr>
+										
+										<tr>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">3</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">General (Semester)</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">PHY101</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">Modern Physics</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">Embedded Theory</p>
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">3 0 0 0 3</p>
+											</td>																	
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">Regular</p>
+																								
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">VL2017185004935</p>
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">D2+TD2</p>
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">TT726</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">			
+												
+													<p style="margin: 0px;">MADESWARAN S - SAS</p>
+												
+																							
+											</td>											
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;"><span style="color:green;">Registered and Approved</span></p>
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">0</p>
+											</td>
+										</tr>
+										
+										<tr>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">4</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">General (Semester)</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">PHY101</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">Modern Physics</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">Embedded Lab</p>
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">0 0 2 0 1</p>
+											</td>																	
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">Regular</p>
+																								
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">VL2017185005295</p>
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">L7+L8</p>
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">TT436</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">			
+												
+													<p style="margin: 0px;">MADESWARAN S - SAS</p>
+												
+																							
+											</td>											
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;"><span style="color:green;">Registered and Approved</span></p>
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">0</p>
+											</td>
+										</tr>
+										
+										<tr>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">5</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">General (Semester)</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">STS422</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">Soft Skills</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">Soft Skill</p>
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">0 0 0 0 1</p>
+											</td>																	
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">Regular</p>
+																								
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">VL2017185000789</p>
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">E2+TE2</p>
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">SJT203</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">			
+												
+													<p style="margin: 0px;">ETHNUS (APT) - SSL</p>
+												
+																							
+											</td>											
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;"><span style="color:green;">Registered and Approved</span></p>
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">0</p>
+											</td>
+										</tr>
+										
+										<tr>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">6</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">General (Semester)</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">SWE308</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">Computer Networks</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">Theory Only</p>
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">3 0 0 0 3</p>
+											</td>																	
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">Regular</p>
+																								
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">VL2017185004368</p>
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">D1+TD1</p>
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">SJT207A</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">			
+												
+													<p style="margin: 0px;">NAVANEETHAN C - SITE</p>
+												
+																							
+											</td>											
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;"><span style="color:green;">Registered and Approved</span></p>
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">0</p>
+											</td>
+										</tr>
+										
+										<tr>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">7</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">General (Semester)</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">SWE309</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">Computer Networks Lab</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">Lab Only</p>
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">0 0 4 0 2</p>
+											</td>																	
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">Regular</p>
+																								
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">VL2017185004369</p>
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">L5+L6+L59+L60</p>
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">SJT120</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">			
+												
+													<p style="margin: 0px;">NAVANEETHAN C - SITE</p>
+												
+																							
+											</td>											
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;"><span style="color:green;">Registered and Approved</span></p>
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">0</p>
+											</td>
+										</tr>
+										
+										<tr>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">8</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">General (Semester)</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">SWE429</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">Software Standards, Benchmarks and Guidelines</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">Theory Only</p>
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">3 0 0 0 3</p>
+											</td>																	
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">Regular (Additional)</p>
+																								
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">VL2017185004384</p>
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">G2+TG2</p>
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">SJT201</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">			
+												
+													<p style="margin: 0px;">KARTHIKEYAN P - SITE</p>
+												
+																							
+											</td>											
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;"><span style="color:green;">Registered, Invoice Generated, Fees Paid and Approved</span></p>
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">VL1700087517</p>
+											</td>
+										</tr>
+										
+										<tr>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">9</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">General (Semester)</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">SWE504</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">Software Quality and Reliability</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">Theory Only</p>
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">3 0 0 0 3</p>
+											</td>																	
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">Regular</p>
+																								
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">VL2017185003935</p>
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">C2+TC2</p>
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">SJT204</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">			
+												
+													<p style="margin: 0px;">ABRAHAM PAUL - SITE</p>
+												
+																							
+											</td>											
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;"><span style="color:green;">Registered and Approved</span></p>
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">0</p>
+											</td>
+										</tr>
+										
+										<tr>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">10</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">General (Semester)</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">SWE512</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">Software Engineering Process, Tools and Methods</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">Theory Only</p>
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">3 0 0 0 3</p>
+											</td>																	
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">Regular</p>
+																								
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">VL2017185003964</p>
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">F1+TF1</p>
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">SJT104</p>
+											</td>
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">			
+												
+													<p style="margin: 0px;">JAGADEESH G - SITE</p>
+												
+																							
+											</td>											
+											<td style="text-align:left; vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;"><span style="color:green;">Registered and Approved</span></p>
+											</td>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px;">
+												<p style="margin: 0px;">0</p>
+											</td>
+										</tr>
+										<tr>
+											<td style="vertical-align: middle; border: 1px solid #b2b2b2; padding: 5px; font-size: 14px;" colspan="16"><span>Total Number Of Credits: </span> <b><span>26</span></b></td>
+										</tr>
+										
+										<tr><td colspan="16" style="border:1px solid #b2b2b2;">
+									<div class="receipt-generate">
+										
+									</div>
+									<div class="cancle-generate">
+										
+									</div></td></tr>
+									
+									</tbody></table>
+
+									
+								</div>
+
+								<div id="ttview" class="table-responsive" style="margin-top: 20px;">
+
+									<table id="timeTableStyle" border="1" class="table table-responsive table-striped" style="border: 2px solid #3c8dbc; border-top: 2px solid #3c8dbc; text-align: center; font-size: 12px;">
+										<tbody><tr style="border-bottom: 1px solid #3c8dbc;">
+											<td rowspan="2" bgcolor="#e2e2e2" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">Theory</td>
+											<td bgcolor="#e2e2e2" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">Start</td>
+											
+												<td bgcolor="#CCCCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">08:00</td>
+											
+											
+												<td bgcolor="#CCCCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">09:00</td>
+											
+											
+												<td bgcolor="#CCCCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">10:00</td>
+											
+											
+												<td bgcolor="#CCCCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">11:00</td>
+											
+											
+												<td bgcolor="#CCCCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">12:00</td>
+											
+											
+												<td bgcolor="#CCCCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">-</td>
+											
+											
+												<td bgcolor="#CCCCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">Lunch</td>
+											
+											
+												<td bgcolor="#CCCCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">14:00</td>
+											
+											
+												<td bgcolor="#CCCCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">15:00</td>
+											
+											
+												<td bgcolor="#CCCCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">16:00</td>
+											
+											
+												<td bgcolor="#CCCCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">17:00</td>
+											
+											
+												<td bgcolor="#CCCCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">18:00</td>
+											
+											
+												<td bgcolor="#CCCCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">18:50</td>
+											
+											
+												<td bgcolor="#CCCCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">19:00</td>
+											
+										</tr>
+										<tr style="border-bottom: 1px solid #3c8dbc;">
+											<td bgcolor="#e2e2e2" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">End</td>
+											
+												<td bgcolor="#CCCCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">08:50</td>
+											
+											
+												<td bgcolor="#CCCCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">09:50</td>
+											
+											
+												<td bgcolor="#CCCCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">10:50</td>
+											
+											
+												<td bgcolor="#CCCCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">11:50</td>
+											
+											
+												<td bgcolor="#CCCCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">12:50</td>
+											
+											
+												<td bgcolor="#CCCCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">-</td>
+											
+											
+												<td bgcolor="#CCCCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">Lunch</td>
+											
+											
+												<td bgcolor="#CCCCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">14:50</td>
+											
+											
+												<td bgcolor="#CCCCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">15:50</td>
+											
+											
+												<td bgcolor="#CCCCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">16:50</td>
+											
+											
+												<td bgcolor="#CCCCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">17:50</td>
+											
+											
+												<td bgcolor="#CCCCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">18:50</td>
+											
+											
+												<td bgcolor="#CCCCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">19:00</td>
+											
+											
+												<td bgcolor="#CCCCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">19:50</td>
+											
+										</tr>
+										<tr style="border-bottom: 1px solid #3c8dbc;">
+											<td rowspan="2" bgcolor="#e2e2e2" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">Lab</td>
+											<td bgcolor="#e2e2e2" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">Start</td>
+											
+												<td bgcolor="#99CCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">08:00</td>
+											
+											
+												<td bgcolor="#99CCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">08:46</td>
+											
+											
+												<td bgcolor="#99CCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">10:00</td>
+											
+											
+												<td bgcolor="#99CCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">10:46</td>
+											
+											
+												<td bgcolor="#99CCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">11:31</td>
+											
+											
+												<td bgcolor="#99CCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">12:16</td>
+											
+											
+												<td bgcolor="#99CCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">Lunch</td>
+											
+											
+												<td bgcolor="#99CCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">14:00</td>
+											
+											
+												<td bgcolor="#99CCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">14:46</td>
+											
+											
+												<td bgcolor="#99CCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">16:00</td>
+											
+											
+												<td bgcolor="#99CCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">16:46</td>
+											
+											
+												<td bgcolor="#99CCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">17:31</td>
+											
+											
+												<td bgcolor="#99CCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">18:16</td>
+											
+											
+												<td bgcolor="#99CCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">-</td>
+											
+										</tr>
+										<tr style="border-bottom: 1px solid #3c8dbc;">
+											<td bgcolor="#e2e2e2" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">End</td>
+											
+												<td bgcolor="#99CCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">08:45</td>
+											
+											
+												<td bgcolor="#99CCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">09:30</td>
+											
+											
+												<td bgcolor="#99CCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">10:45</td>
+											
+											
+												<td bgcolor="#99CCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">11:30</td>
+											
+											
+												<td bgcolor="#99CCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">12:15</td>
+											
+											
+												<td bgcolor="#99CCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">13:00</td>
+											
+											
+												<td bgcolor="#99CCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">Lunch</td>
+											
+											
+												<td bgcolor="#99CCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">14:45</td>
+											
+											
+												<td bgcolor="#99CCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">15:30</td>
+											
+											
+												<td bgcolor="#99CCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">16:45</td>
+											
+											
+												<td bgcolor="#99CCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">17:30</td>
+											
+											
+												<td bgcolor="#99CCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">18:15</td>
+											
+											
+												<td bgcolor="#99CCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">19:00</td>
+											
+											
+												<td bgcolor="#99CCFF" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">-</td>
+											
+										</tr>
+										<tr style="border-bottom: 1px solid #3c8dbc; background-color: #FFFFCC;">
+											<td rowspan="2" bgcolor="#e2e2e2" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">MON</td>
+											<td bgcolor="#e2e2e2" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">Theory</td>
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">A1</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#CCFF33">SWE512-TH-F1-SJT104</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#CCFF33">SWE308-TH-D1-SJT207A</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">TB1</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">TG1</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">-</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#e2e2e2">Lunch</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">A2</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">F2</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#CCFF33">PHY101-ETH-D2-TT726</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#CCFF33">MAT202-TH-TB2-SJTG05</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#CCFF33">SWE429-TH-TG2-SJT201</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">-</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">V3</td>
+											
+										</tr>
+										<tr style="border-bottom: 1px solid #3c8dbc; background-color: #f9efa4;">
+											<td bgcolor="#e2e2e2" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">Lab</td>
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L1</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L2</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L3</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L4</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#CCFF33">SWE309-LO-L5-SJT120</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#CCFF33">SWE309-LO-L6-SJT120</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#e2e2e2">Lunch</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L31</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L32</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L33</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L34</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L35</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L36</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">-</td>
+											
+										</tr>
+										<tr style="border-bottom: 1px solid #3c8dbc; background-color: #FFFFCC;">
+											<td rowspan="2" bgcolor="#e2e2e2" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">TUE</td>
+											<td bgcolor="#e2e2e2" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">Theory</td>
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">B1</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">G1</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#CCFF33">HUM124-TH-E1-SMV123</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">TC1</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">TAA1</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">-</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#e2e2e2">Lunch</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#CCFF33">MAT202-TH-B2-SJTG05</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#CCFF33">SWE429-TH-G2-SJT201</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#CCFF33">STS422-SS-E2-SJT203</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#CCFF33">SWE504-TH-TC2-SJT204</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">TAA2</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">-</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">V4</td>
+											
+										</tr>
+										<tr style="border-bottom: 1px solid #3c8dbc; background-color: #f9efa4;">
+											<td bgcolor="#e2e2e2" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">Lab</td>
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#CCFF33">PHY101-ELA-L7-TT436</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#CCFF33">PHY101-ELA-L8-TT436</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L9</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L10</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L11</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L12</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#e2e2e2">Lunch</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L37</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L38</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L39</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L40</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L41</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L42</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">-</td>
+											
+										</tr>
+										<tr style="border-bottom: 1px solid #3c8dbc; background-color: #FFFFCC;">
+											<td rowspan="2" bgcolor="#e2e2e2" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">WED</td>
+											<td bgcolor="#e2e2e2" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">Theory</td>
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">C1</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">A1</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#CCFF33">SWE512-TH-F1-SJT104</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">V1</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">V2</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">-</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#e2e2e2">Lunch</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#CCFF33">SWE504-TH-C2-SJT204</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">A2</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">F2</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#CCFF33">PHY101-ETH-TD2-TT726</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#CCFF33">MAT202-TH-TBB2-SJTG05</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">-</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">V5</td>
+											
+										</tr>
+										<tr style="border-bottom: 1px solid #3c8dbc; background-color: #f9efa4;">
+											<td bgcolor="#e2e2e2" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">Lab</td>
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L13</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L14</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L15</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L16</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">-</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">-</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#e2e2e2">Lunch</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L43</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L44</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L45</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L46</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L47</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L48</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">-</td>
+											
+										</tr>
+										<tr style="border-bottom: 1px solid #3c8dbc; background-color: #FFFFCC;">
+											<td rowspan="2" bgcolor="#e2e2e2" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">THU</td>
+											<td bgcolor="#e2e2e2" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">Theory</td>
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#CCFF33">SWE308-TH-D1-SJT207A</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">B1</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">G1</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#CCFF33">HUM124-TH-TE1-SMV123</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">TCC1</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">-</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#e2e2e2">Lunch</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#CCFF33">PHY101-ETH-D2-TT726</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#CCFF33">MAT202-TH-B2-SJTG05</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#CCFF33">SWE429-TH-G2-SJT201</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#CCFF33">STS422-SS-TE2-SJT203</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">TCC2</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">-</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">V6</td>
+											
+										</tr>
+										<tr style="border-bottom: 1px solid #3c8dbc; background-color: #f9efa4;">
+											<td bgcolor="#e2e2e2" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">Lab</td>
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L19</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L20</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L21</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L22</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L23</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L24</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#e2e2e2">Lunch</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L49</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L50</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L51</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L52</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L53</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L54</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">-</td>
+											
+										</tr>
+										<tr style="border-bottom: 1px solid #3c8dbc; background-color: #FFFFCC;">
+											<td rowspan="2" bgcolor="#e2e2e2" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">FRI</td>
+											<td bgcolor="#e2e2e2" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">Theory</td>
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#CCFF33">HUM124-TH-E1-SMV123</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">C1</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">TA1</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#CCFF33">SWE512-TH-TF1-SJT104</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#CCFF33">SWE308-TH-TD1-SJT207A</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">-</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#e2e2e2">Lunch</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#CCFF33">STS422-SS-E2-SJT203</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#CCFF33">SWE504-TH-C2-SJT204</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">TA2</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">TF2</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">TDD2</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">-</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">V7</td>
+											
+										</tr>
+										<tr style="border-bottom: 1px solid #3c8dbc; background-color: #f9efa4;">
+											<td bgcolor="#e2e2e2" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">Lab</td>
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L25</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L26</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L27</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L28</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L29</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L30</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#e2e2e2">Lunch</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L55</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L56</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L57</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L58</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#CCFF33">SWE309-LO-L59-SJT120</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#CCFF33">SWE309-LO-L60-SJT120</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">-</td>
+											
+										</tr>
+										<tr style="border-bottom: 1px solid #3c8dbc; background-color: #FFFFCC;">
+											<td rowspan="2" bgcolor="#e2e2e2" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">SAT</td>
+											<td bgcolor="#e2e2e2" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">Theory</td>
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">V8</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">X11</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">X12</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">Y11</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">Y12</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">-</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#e2e2e2">Lunch</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">X21</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">Z21</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">Y21</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">W21</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">W22</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">-</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">V9</td>
+											
+										</tr>
+										<tr style="border-bottom: 1px solid #3c8dbc; background-color: #f9efa4;">
+											<td bgcolor="#e2e2e2" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">Lab</td>
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L71</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L72</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L73</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L74</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L75</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L76</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#e2e2e2">Lunch</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L77</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L78</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L79</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L80</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L81</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L82</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">-</td>
+											
+										</tr>
+										<tr style="border-bottom: 1px solid #3c8dbc; background-color: #FFFFCC;">
+											<td rowspan="2" bgcolor="#e2e2e2" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">SUN</td>
+											<td bgcolor="#e2e2e2" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">Theory</td>
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">V10</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">Y11</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">Y12</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">X11</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">X12</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">-</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#e2e2e2">Lunch</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">Y21</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">Z21</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">X21</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">W21</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">W22</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">-</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">V11</td>
+											
+										</tr>
+										<tr style="border-bottom: 1px solid #3c8dbc; background-color: #f9efa4;">
+											<td bgcolor="#e2e2e2" style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">Lab</td>
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L83</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L84</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L85</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L86</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L87</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L88</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;" bgcolor="#e2e2e2">Lunch</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L89</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L90</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L91</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L92</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L93</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">L94</td>
+											
+											
+												<td style="border-bottom: 1px solid #3c8dbc; vertical-align: middle; padding: 3px; width: 50px;">-</td>
+											
+										</tr>
+									</tbody></table>
+								</div>
+							</div></div>
+
+					</div>
+
+				</section>
+
+				<noscript>
+					&lt;h2 class="text-red"&gt;Enable JavasCript to Access V-TOP&lt;/h2&gt;
+				</noscript>
+				<script type="text/javascript">
+					/*<![CDATA[*/
+
+					jQuery(document).ready(
+							function() {
+
+								// binds form submission and fields to the validation engine
+
+								jQuery("#studentTimeTable").validationEngine(
+										'attach',
+										{
+											autoHidePrompt : true,
+											binded : false,
+											onValidationComplete : function(
+													form, status) {
+												if (status) {
+													processViewTimeTable();
+												}
+
+											}
+										});
+							});
+
+					function processViewTimeTable(semesterSubId) {
+						var semesterSubId = document
+								.getElementById("semesterSubId").value;
+						$
+								.ajax({
+									url : "processViewTimeTable",
+									type : "POST",
+									data : "semesterSubId=" + semesterSubId,
+									success : function(response) {
+										$("#loadMyFragment").html(response);
+									},
+									error : function(jqXHR, textStatus,
+											errorMessage) {
+										$.unblockUI();
+										$("#upload-file-message")
+												.text(
+														errorMessage
+																+ "Error while Submitting");
+									}
+								});
+
+						$("html, body").animate({
+							scrollTop : 0
+						});
+					}
+
+					function processViewInvoice(semesterSubId) {
+						var semesterSubId = document
+								.getElementById("semesterSubId").value;
+						$
+								.ajax({
+									url : "processViewInvoice",
+									type : "POST",
+									data : "semesterSubId=" + semesterSubId,
+									success : function(response) {
+										$("#studentDetailsList").html(response);
+									},
+									error : function(jqXHR, textStatus,
+											errorMessage) {
+										$.unblockUI();
+										$("#upload-file-message")
+												.text(
+														errorMessage
+																+ "Error while Submitting");
+									}
+								});
+
+						$("html, body").animate({
+							scrollTop : 0
+						});
+					}
+
+					function cancleInvoiceGenerate(semesterSubId) {
+						var semesterSubId = document
+								.getElementById("semesterSubId").value;
+						$
+								.ajax({
+									url : "cancleInvoiceGenerate",
+									type : "POST",
+									data : "semesterSubId=" + semesterSubId,
+									success : function(response) {
+										$("#studentDetailsList").html(response);
+									},
+									error : function(jqXHR, textStatus,
+											errorMessage) {
+										$.unblockUI();
+										$("#upload-file-message")
+												.text(
+														errorMessage
+																+ "Error while Submitting");
+									}
+								});
+
+						$("html, body").animate({
+							scrollTop : 0
+						});
+					}
+
+					/*]]>*/
+				</script>
+
+			</div></div>
+
+		<footer class="main-footer" style="padding:0px;margin:0px;">
+	
+			<div class="modal fade" id="myModal" role="dialog">
+			  <div class="modal-dialog">
+			  
+			    <!-- Modal content-->
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal">×</button>
+			        <h4 class="modal-title" style="color:red;">Sorry !!!</h4>
+			      </div>
+			      <div class="modal-body">
+			        <p style="color:green;">This page is under Construction !!! Please try later</p>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			      </div>
+			    </div>
+			    
+			  </div>
+			</div>
+
+
+			
+
+	 	<script src="./sangeeth_sample_files/jquery-2.2.3.min.js.download"></script>
+		<script src="./sangeeth_sample_files/jquery-ui.min.js.download"></script>
+		<script src="./sangeeth_sample_files/jquery.validate.min.js.download"></script>
+		<script src="./sangeeth_sample_files/bootstrap.min.js.download"></script>
+		<script src="./sangeeth_sample_files/bootstrapValidator.min.js.download"></script>
+		<script src="./sangeeth_sample_files/jquery.hotkeys.js.download"></script>
+		<script src="./sangeeth_sample_files/app.js.download"></script>
+		<script src="./sangeeth_sample_files/app.min.js.download"></script>
+		<script src="./sangeeth_sample_files/bootstrap-filestyle.min.js.download"></script>
+
+
+	    <script src="./sangeeth_sample_files/bootstrapValidator.js.download"></script>	
+		<script src="./sangeeth_sample_files/moment.min.js.download"></script>		
+		<script src="./sangeeth_sample_files/daterangepicker.js.download"></script>
+		<script src="./sangeeth_sample_files/bootstrap-datepicker.js.download"></script>
+		<script src="./sangeeth_sample_files/bootstrap-timepicker.min.js.download"></script>
+		
+ 		<script src="./sangeeth_sample_files/jquery.slimscroll.min.js.download"></script> 
+ 		<script src="./sangeeth_sample_files/jquery.slimscroll.js.download"></script> 
+
+		<script src="./sangeeth_sample_files/jquery.blockUI.js.download"></script>
+		<script src="./sangeeth_sample_files/validate2.js.download"></script>
+		<script src="./sangeeth_sample_files/sweetalert.min.js.download"></script>
+		<script src="./sangeeth_sample_files/bootstrap-datetimepicker.min.js.download"></script>
+		<script src="./sangeeth_sample_files/bootstrap-multiselect.js.download"></script>
+		<script src="./sangeeth_sample_files/summernote.js.download"></script>
+		<script src="./sangeeth_sample_files/jquery.validationEngine-en.js.download" type="text/javascript" charset="utf-8"> </script>
+  		<script src="./sangeeth_sample_files/jquery.validationEngine.js.download" type="text/javascript" charset="utf-8"></script>
+
+		<script src="./sangeeth_sample_files/app.min.js.download"></script>
+		<script src="./sangeeth_sample_files/fastclick.js.download"></script>
+		<script src="./sangeeth_sample_files/jquery.dataTables.min.js.download"></script> 
+		<script src="./sangeeth_sample_files/datatable.bootstrap.min.js.download"></script> 
+
+		<script src="./sangeeth_sample_files/vtop-validation.js.download"></script>
+		<script src="./sangeeth_sample_files/vit-custom.js.download"></script>
+		
+		<script src="./sangeeth_sample_files/pdf.js.download"></script>
+		<script src="./sangeeth_sample_files/onlineState.js.download"></script>
+		<script src="./sangeeth_sample_files/asynchronous.js.download"></script>
+		<script src="./sangeeth_sample_files/pdf.worker.js.download"></script>
+		<script src="./sangeeth_sample_files/datatables.js.download"></script> 
+    	<script src="./sangeeth_sample_files/datatables.min.js.download"></script>
+		<noscript>
+			&lt;h2 class="text-red"&gt;Enable JavaScript to Access V-TOP&lt;/h2&gt;
+		</noscript>
+	
+	
+			<script>
+			/*<![CDATA[*/
+				
+				window.onload = function() {
+					if (window.opener) {
+					    processURL('getLogin', 'page-content');
+					    
+					} else if (window.top !== window.self) {
+					    processURL('unAuthorized', 'page-content');
+					} else {
+						 processURL('unAuthorized', 'page-content');
+					}
+				}	
+			
+				function processURL(url,id){
+					var http = new XMLHttpRequest();
+					//var params = "lorem=ipsum&name=binny";
+					http.open("POST", url, true);
+		
+					//Send the proper header information along with the request
+					http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		
+					http.onreadystatechange = function() {//Call a function when the state changes.
+					    if(http.readyState == 4 && http.status == 200) {
+					       document.getElementById(id).innerHTML=http.responseText;
+					    }
+					}
+					//http.send(params);
+					http.send();
+				}
+				
+			/*]]>*/
+			</script>
+
+
+		<script>
+		/*<![CDATA[*/
+
+			$(document).ready(function() {
+						$('#form-signin_v1').bootstrapValidator(rules).on(
+								'success.form.bv', function(e) {
+									e.preventDefault();
+						});
+			}); 
+			
+			function validatorCall(e) {
+				
+				$('#form-signin_v1').bootstrapValidator('validate');
+		        if ($('#form-signin_v1').bootstrapValidator('isValid')) {
+		        	onSubmitForm();
+		        }
+			}
+	
+	
+ 			function onSubmitForm() {
+ 				var data="uname="+$("#uname").val()+"&passwd="+$("#passwd").val()+"&captchaCheck="+$("#captchaCheck").val(); 
+				ajaxCall('processLogin',data,'page-content');
+			}
+
+			
+			function fixHeight() {
+				
+				var winHeight=$( window ).height()-95;
+				$("#loginWrapper").css("height",winHeight+"px");
+				$("#loginWrapper").css("overflow", "auto");
+			
+			}
+
+			/*]]>*/
+		</script>
+		
+		<script>
+			
+			history.pushState(null, null, document.URL);
+			window.addEventListener('popstate', function() {
+				history.pushState(null, null, document.URL);
+			});
+
+		
+			$(window).bind("onunload", function() { 
+				$.blockUI();
+				ajaxCall("/cloneLogout",null,null);
+				$.unblockUI();
+			})
+
+		
+			$(document).bind('keydown', 'alt+right', function(e) {
+				e.preventDefault();
+			});
+
+			$(document).bind('keydown', 'alt+left', function(e) {
+				e.preventDefault();
+			});
+			
+			history.pushState(null, null, document.URL);
+			window.addEventListener('popstate', function() {
+				history.pushState(null, null, document.URL);
+			});
+			
+			
+			$( window ).unload(function() {
+				$.ajax({
+					type : "POST",
+					url : "/cloneLogout",
+					success : function(response){
+					},
+					error : function(jqXHR, textStatus, errorMessage) {
+					}		
+				})
+			});
+
+				
+				
+				function doRefreshCaptcha() 
+				{
+		
+					$.ajax({
+						url : "doRefreshCaptcha",									
+						type : "POST",
+						cache : false,
+						processData : false,
+						contentType : false,
+						success : function(response)				
+						{	
+							$("#captchaRefresh").html(response);
+							
+						
+						}
+				 	});
+				}
+				
+		</script>
+
+
+
+
+	</footer>
+	</div>
+	
+	<div>
+	    <script>
+            /*<![CDATA[*/
+				
+            	$(document).ready(function () {
+                  	var url='admissions/UGCDetails';
+                   	ajaxCall(url,"dummy=NO","page-wrapper");	
+                 })
+	            
+       		/*]]>*/
+      	</script>
+     </div>   
+	
+
+</body></html>

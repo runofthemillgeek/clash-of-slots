@@ -1,0 +1,39 @@
+#panel-custom{
+	 border-width: 2px;
+}
+
+#form-custom input[type="text"],  #form-custom input[type="email"], #form-custom  input[type="password"], #form-custom  input[type="date"]
+{
+    margin-bottom: 5px;
+    height:40px;
+    border-color: #004080;
+    border-width: 1px;
+}
+
+/* For Progress Bar*/
+#myProgress {
+  position: relative;
+  width: 80%;
+  height: 30px;
+  background-color: #ddd;
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+
+#myBar {
+  position: absolute;
+  width: 1%;
+  height: 100%;
+  background-color: #154b6b;
+}
+
+#label {
+  text-align: center;
+  line-height: 30px;
+  color: white;
+ }
+ 
+ 
+ 
+ 

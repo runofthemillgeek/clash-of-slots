@@ -1,0 +1,9 @@
+
+function getplaces(gid,src)
+{	
+	whos = src
+	var request = "http://www.geonames.org/childrenJSON?geonameId="+gid+"&callback=listPlaces&style=long";
+	aObj = new JSONscriptRequest(request);
+	aObj.buildScriptTag();
+	aObj.addScriptTag();	
+}
