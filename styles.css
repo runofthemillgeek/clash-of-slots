@@ -25,6 +25,7 @@ body {
 }
 
 .overview {
+    margin: 0 auto;
     text-align: center;
     font-size: 2rem;
 }
@@ -53,7 +54,6 @@ kbd {
 .paste-area {
     overflow-x: auto;
     font-size: 1.4rem;
-    margin: 0 auto;
 }
 
 .of-visible {
