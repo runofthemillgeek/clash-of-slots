@@ -11,12 +11,40 @@ app.k = {
     SLOT_REGEX_CODE_IDX: 1,
     SLOT_REGEX_VENUE_IDX: 4,        
     TABLE_REF: d.getElementsByClassName('paste-area')[0],
-    USER_ERR_ELEMENT: d.getElementsByClassName('user-error-message')[0]
+    USER_ERR_ELEMENT: d.getElementsByClassName('user-error-message')[0],
+    RESET_BUTTON: d.getElementById('resetButton'),
+    DOWNLOAD_BUTTON: d.getElementById('downloadButton')
 };
 
 app.init = function init() {
+    this.setUpListeners();
     this.listenForPaste();
-};
+}
+
+app.setUpListeners = function setUpListeners() {
+    var dBtn = this.k.DOWNLOAD_BUTTON;
+
+    this.k.RESET_BUTTON.addEventListener('click', function() {
+        this.resetEverything();
+    }.bind(this));
+
+    html2canvas(this.k.TABLE_REF.children[0], {
+        onrendered: function (canvas) {
+            if (dBtn)
+                dBtn.href = canvas.toDataURL();
+            // Remove `visible` once screenshot is taken.
+            // p.classList.remove('of-visible');
+        },
+        width: null,
+        height: null,
+    });
+}
+
+app.resetEverything = function resetEverything() {
+    this.resetError();
+    this.resetTable();
+    this.k.DOWNLOAD_BUTTON.classList.add('hidden');
+}
 
 app.listenForPaste = function listenForPaste() {
     var self = this;
@@ -25,18 +53,15 @@ app.listenForPaste = function listenForPaste() {
         var data = e.clipboardData.getData('text/html');
         e.preventDefault();
 
-        self.resetTable();
-        self.removeDownloadButton();
-        self.resetError();
-
         try {
             self.parseData(data);
-            self.addDownloadButton();
+            self.showDownloadButton();
         } catch (e) {
+            console.log(e);
             self.error("Couldn't parse the copied text. Are you sure you copied the VTOP page?");
         }
     });
-};
+}
 
 app.parseData = function parseData(data) {
     var self = this;
@@ -86,10 +111,9 @@ app.getSlotMapFromList = function getSlotMapFromList(list) {
 
 app.resetTable = function resetTable() {
     var te = this.k.TABLE_REF;
-    var tds = te.querySelectorAll(".highlight");
+    var tds = te.querySelectorAll(".slot-clash");
     [].forEach.call(tds, function (td) {
-        td.classList.remove('highlight');
-        td.children[0].remove();
+        td.classList.remove('slot-clash');
     });
 }
 
@@ -103,41 +127,8 @@ app.resetError = function resetError() {
     e.textContent = "";
 }
 
-app.addDownloadButton = function addDownloadButton() {
-    var t = this.k.TABLE_REF.children[0],
-        p = t.parentElement;
-
-    var button = document.createElement('a');
-    button.textContent = "Download Image";
-    button.className = 'download-button';
-    button.download = 'timetable.png';
-    button.target = '_blank';
-
-    // Set table container's overflow to visible to prevent clipping
-    // when html2canvas is doing its thing.
-    p.classList.add('of-visible');
-
-    document.getElementsByClassName('download-area')[0]
-            .appendChild(button);
-
-    html2canvas(t, {
-        onrendered: function (canvas) {
-            button.href = canvas.toDataURL();
-            // Remove `visible` once screenshot is taken.
-            p.classList.remove('of-visible');
-        },
-        width: null,
-        height: null,
-    })
-}
-
-app.removeDownloadButton = function removeDownloadButton() {
-    var elem = document.getElementsByClassName('download-button')[0];
-
-    if (elem)
-        elem
-            .parentElement
-            .removeChild(elem);
+app.showDownloadButton = function showDownloadButton() {
+    this.k.DOWNLOAD_BUTTON.classList.remove('hidden');
 }
 
 return app;

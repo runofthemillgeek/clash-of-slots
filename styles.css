@@ -16,6 +16,10 @@ body {
     box-sizing: border-box;
 }
 
+.hidden {
+    display: none;
+}
+
 .container {
     margin: 0 auto;
 }
@@ -125,15 +129,21 @@ kbd {
 }
 
 .download-area {
-    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
-.download-button {
+.download-area * + * {
+    margin-left: 10px;
+}
+
+.btn {
+    cursor: pointer;
     display: inline-block;
     text-decoration: none;
     padding: 5px 15px;
-    border: 3px solid steelblue;
-    color: steelblue;
+    border: 3px solid #333;
+    color: #333;
     background-color: #fff;
     font-weight: bold;
     font-size: 3rem;
@@ -142,9 +152,18 @@ kbd {
                 background-color 0.5s ease-out;
 }
 
+.btn:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+.download-button {
+    border: 3px solid steelblue;
+    color: steelblue;
+}
+
 .download-button:hover {
     background-color: steelblue;
-    color: #fff;
 }
 
 footer {
