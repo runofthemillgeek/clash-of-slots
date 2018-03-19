@@ -25,6 +25,22 @@ app.data = {
 app.init = function init() {
     this.setUpListeners();
     this.listenForPaste();
+    this.loadFromStorage();
+}
+
+app.loadFromStorage = function loadFromStorage() {
+    return localforage.getItem('tables')
+        .then(tables => {
+            if (!tables) return;
+
+            this.data.tables = tables;
+            this.updateCounts();
+            this.fillTable();
+        });
+}
+
+app.saveToStorage = function saveToStorage() {
+    return localforage.setItem('tables', this.data.tables);
 }
 
 app.setUpListeners = function setUpListeners() {
@@ -44,12 +60,30 @@ app.setUpListeners = function setUpListeners() {
         width: null,
         height: null,
     });
+
+    d.addEventListener('DOMContentLoaded', function() {
+        app.loadFromStorage();
+    });
 }
 
 app.resetEverything = function resetEverything() {
-    this.resetError();
-    this.resetTable();
-    this.k.DOWNLOAD_BUTTON.classList.add('hidden');
+    this.resetData()
+        .then(() => {
+            this.resetError();
+            this.resetTable();
+            this.k.DOWNLOAD_BUTTON.classList.add('hidden');
+        });
+}
+
+app.resetData = function resetData() {
+    return localforage.setItem('tables', [])
+        .then(() => {
+            this.data = {
+                tables: [],
+                count: {},
+                maxOccupancy: 0
+            };
+        });
 }
 
 app.listenForPaste = function listenForPaste() {
@@ -81,8 +115,11 @@ app.parseData = function parseData(data) {
 
     var slots = this.getSlots(t);
     this.pushTableData(slots);
-    this.updateCounts();
-    this.fillTable();
+    this.saveToStorage()
+        .then(() => {
+            this.updateCounts();
+            this.fillTable();
+        });
 }
 
 app.updateCounts = function updateCounts() {
@@ -156,6 +193,8 @@ app.resetTable = function resetTable() {
     var tds = te.querySelectorAll(".slot-clash");
     [].forEach.call(tds, function (td) {
         td.classList.remove('slot-clash');
+        td.classList.remove('slot-clash--high');
+        td.classList.remove('slot-clash--mid');
     });
 }
 
