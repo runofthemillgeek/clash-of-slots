@@ -36,6 +36,8 @@ app.loadFromStorage = function loadFromStorage() {
             this.data.tables = tables;
             this.updateCounts();
             this.fillTable();
+
+            if (tables.length) this.showDownloadButton();
         });
 }
 
