@@ -50,16 +50,14 @@ app.setUpListeners = function setUpListeners() {
         this.resetEverything();
     }.bind(this));
 
-    html2canvas(this.k.TABLE_REF.children[0], {
-        onrendered: function (canvas) {
-            if (dBtn)
-                dBtn.href = canvas.toDataURL();
-            // Remove `visible` once screenshot is taken.
-            // p.classList.remove('of-visible');
-        },
-        width: null,
-        height: null,
-    });
+    this.k.DOWNLOAD_BUTTON.addEventListener('click', function() {
+        var popup = window.open();
+
+        html2canvas(this.k.TABLE_REF.children[0])
+            .then(canvas => {
+                popup.document.body.innerHTML = `<image src="${canvas.toDataURL()}"/>`;
+            });
+    }.bind(this));
 
     d.addEventListener('DOMContentLoaded', function() {
         app.loadFromStorage();
