@@ -16,6 +16,12 @@ app.k = {
     DOWNLOAD_BUTTON: d.getElementById('downloadButton')
 };
 
+app.data = {
+    tables: [],
+    count: {},
+    maxOccupancy: 0
+};
+
 app.init = function init() {
     this.setUpListeners();
     this.listenForPaste();
@@ -73,16 +79,52 @@ app.parseData = function parseData(data) {
         throw Error("Didn't find valid HTML in clipboard. Query for table returned " + Object.toString(t));
     }
 
-    this.fillTable(t);
+    var slots = this.getSlots(t);
+    this.pushTableData(slots);
+    this.updateCounts();
+    this.fillTable();
 }
 
-app.fillTable = function fillTable(tableHtml) {
-    var slots = this.getSlots(tableHtml);
+app.updateCounts = function updateCounts() {
+    var counts = this.data.counts;
+    var tables = this.data.tables;
+    var max = 0;
 
-    Object.keys(slots).forEach(function (slot) {
+    counts = tables.reduce((store, curr) => {
+
+        var _store = Object.assign({}, store);
+
+        for (var slot of Object.keys(curr)) {
+            if (!(slot in _store)) {
+                _store[slot] = 1;
+            } else {
+                _store[slot]++;
+            }
+
+            if (_store[slot] > max) max = _store[slot];
+        }
+
+        return _store;
+
+    }, {});
+
+    this.data.count = counts;
+    this.data.maxOccupancy = max;
+}
+
+app.pushTableData = function pushTableData(slots) {
+    this.data.tables.push(slots);
+}
+
+app.fillTable = function fillTable() {
+    var max = this.data.maxOccupancy;
+    var count = this.data.count;
+
+    Object.keys(count).forEach(function (slot) {
         var tds = d.querySelectorAll('.' + slot);
         tds.forEach(function (td) {
             td.classList.add('slot-clash');
+            td.classList.add(getColorClass(count[slot], max));
         });
     });
 }
@@ -129,6 +171,17 @@ app.resetError = function resetError() {
 
 app.showDownloadButton = function showDownloadButton() {
     this.k.DOWNLOAD_BUTTON.classList.remove('hidden');
+}
+
+function getColorClass(val, max) {
+    var THRESHOLD = 0.5;
+
+    if (val === 0) return '';
+    if (val / max > THRESHOLD) {
+        return 'slot-clash--high';
+    } else {
+        return 'slot-clash--mid';
+    }
 }
 
 return app;

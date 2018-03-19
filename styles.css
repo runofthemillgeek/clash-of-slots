@@ -89,8 +89,15 @@ kbd {
 }
 
 .TimetableContent.slot-clash {
-    background-color: #f00;
     color: #fff;
+}
+
+.slot-clash--high {
+    background-color: #f00;
+}
+
+.slot-clash--mid {
+    background-color: #f90;
 }
 
 .paste-area .table-bordered td,
