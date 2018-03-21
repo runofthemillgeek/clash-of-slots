@@ -13,7 +13,8 @@ app.k = {
     TABLE_REF: d.getElementsByClassName('paste-area')[0],
     USER_ERR_ELEMENT: d.getElementsByClassName('user-error-message')[0],
     RESET_BUTTON: d.getElementById('resetButton'),
-    DOWNLOAD_BUTTON: d.getElementById('downloadButton')
+    DOWNLOAD_BUTTON: d.getElementById('downloadButton'),
+    GET_URL_BUTTON: d.getElementById('getUrlButton')
 };
 
 app.data = {
@@ -60,6 +61,21 @@ app.setUpListeners = function setUpListeners() {
                 popup.document.body.innerHTML = `<image src="${canvas.toDataURL()}"/>`;
             });
     }.bind(this));
+
+    this.k.GET_URL_BUTTON.addEventListener('click', function() {
+        fetch('/save', {
+            method: 'POST',
+            body: JSON.stringify(app.data),
+            credentials: 'include',
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            })
+        }).then(resp => resp.json())
+        .then(id => {
+            location.href = `/u/${id}`;
+        })
+        .catch(err => console.log('Some issue occurred'));
+    });
 
     d.addEventListener('DOMContentLoaded', function() {
         app.loadFromStorage();
@@ -210,6 +226,16 @@ app.resetError = function resetError() {
 
 app.showDownloadButton = function showDownloadButton() {
     this.k.DOWNLOAD_BUTTON.classList.remove('hidden');
+}
+
+app.loadJson = function loadJson(tables) {
+    localforage.setItem('tables', tables)
+        .then(() => {
+            return this.loadFromStorage();
+        })
+        .then(() => {
+            console.log("Data loaded from JSON successfully.");
+        });
 }
 
 function getColorClass(val, max) {

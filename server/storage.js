@@ -16,13 +16,18 @@ module.exports = {
 }
 
 function addTablesForSession(tables) {
-  return db.get('data')
-    .push({ id: shortid.generate(), tables })
+  const id = shortid.generate();
+  
+  db.get('data')
+    .push({ id, tables })
     .write();
+
+  return id;
 }
 
 function getTablesForSession(id) {
-  return db.get('posts')
+  return db.get('data')
     .filter({ id })
+    .head()
     .value();
 }
