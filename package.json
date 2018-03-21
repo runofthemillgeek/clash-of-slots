@@ -4,12 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon server/index.js"    
+    "dev": "nodemon server/index.js"
   },
   "author": "Sangeeth Sudheer",
   "license": "MIT",
   "dependencies": {
+    "connect-redis": "^3.3.3",
     "express": "^4.16.3",
-    "nodemon": "^1.17.2"
+    "express-session": "^1.15.6",
+    "lowdb": "^1.0.0",
+    "nodemon": "^1.17.2",
+    "shortid": "^2.2.8"
   }
 }
