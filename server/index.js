@@ -23,6 +23,10 @@ app.use(session({
 
 app.use('/static', express.static(path.resolve(__dirname, '../static')));
 
+app.get('/sw.js', function(req, res) {
+  return res.sendFile(path.resolve(process.cwd(), 'static', 'sw.js'));
+});
+
 app.get('/', function(req, res) {
   if (req.session.urlId) console.log(req.session.urlId);
 

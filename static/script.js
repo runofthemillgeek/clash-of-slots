@@ -24,6 +24,10 @@ app.data = {
 };
 
 app.init = function init() {
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("sw.js");
+    }
+
     this.setUpListeners();
     this.listenForPaste();
     this.loadFromStorage();

@@ -1,0 +1,13 @@
+{
+  "name": "Clash of Slots",
+  "short_name": "Clash of Slots",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "Copy paste your time tables and find out free slots.",
+  "icons": [{
+    "src": "/static/192.png",
+    "sizes": "192x192",
+    "type": "image/png"
+  }]
+}
